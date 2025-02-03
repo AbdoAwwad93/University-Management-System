@@ -75,14 +75,6 @@ A comprehensive console-based application for managing university operations, bu
    - Proper inheritance hierarchy with User as base class
    - Derived classes (Student, Doctor, Admin) maintain base class contracts
 
-4. **Interface Segregation Principle (ISP)**
-   - Focused entity classes
-   - Specific functionality for each user type
-
-5. **Dependency Inversion Principle (DIP)**
-   - Database context abstraction
-   - Configuration management through interfaces
-
 ## 🏃‍♂️ Getting Started
 
 1. Clone the repository
