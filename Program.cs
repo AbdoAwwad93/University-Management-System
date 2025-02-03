@@ -357,8 +357,8 @@ namespace University_Managment_system
                     Thread.Sleep(1000);
                     continue;
                 }
-                try
-                {
+                //try
+                //{
                     switch (choice)
                     {
                         case 1:
@@ -373,12 +373,12 @@ namespace University_Managment_system
                             if (doctor != null) DoctorOperations(doctor);
                             break;
                     }
-                }
-                catch (Exception ex)
-                {
-                    Helper.ShowError($"Error: {ex.Message}");
-                    Console.ReadKey();
-                }
+                //?
+                //catch (Exception ex)
+                //{
+                //    Helper.ShowError($"Error: {ex.Message}");
+                //    Console.ReadKey();
+                //}
             }
         }
 

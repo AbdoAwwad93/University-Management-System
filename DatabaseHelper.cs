@@ -96,7 +96,8 @@ namespace University_Managment_system
             var department = GetDepartment(student.DeptId);
             var result = (from s in context.Enrollments
                           join course in context.Courses
-                          on s.StudentId equals student.Id
+                          on s.CourseId equals course.Id
+                          where s.StudentId == student.Id
                           select new
                           {
                               Name = course.Name,
@@ -151,23 +152,24 @@ namespace University_Managment_system
             }
         }
 
-        
+
         public static void EnrollCourse(Student student, int CourseID)
         {
-            if (student.Courses.Any(x => x.Id == CourseID))
+            if (context.Enrollments.Any(x => x.CourseId == CourseID&&x.StudentId==student.Id))
             {
                 Helper.ShowError("Already Enrolled in this course !");
-                
+                return;
             }
-            var course = context.Courses.SingleOrDefault(x => x.Id == CourseID);
-            if (course is not null && student is not null)
-            {
-                student.Courses.Add(course);
-                context.SaveChanges();
-                Helper.ShowSuccess($"Enrolled in {course.Name}");
-                
-            }
-            Helper.ShowError("Invalid Course ID !");
+                var course = context.Courses.SingleOrDefault(x => x.Id == CourseID);
+                if (course is not null && student is not null)
+                {
+                    student.Courses.Add(course);
+                    context.SaveChanges();
+                    Helper.ShowSuccess($"Enrolled in {course.Name}");
+
+                }
+                else
+                Helper.ShowError("Invalid Course ID !");            
         }
         public static void ShowAllStudents()
         {
